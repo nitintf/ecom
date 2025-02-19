@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@ecom/database": [
+        "libs/database/src"
+      ],
+      "@ecom/database/*": [
+        "libs/database/src/*"
+      ],
+      "@ecom/logger": [
+        "libs/logger/src"
+      ],
+      "@ecom/logger/*": [
+        "libs/logger/src/*"
+      ],
+      "@ecom/rmq": [
+        "libs/rmq/src"
+      ],
+      "@ecom/rmq/*": [
+        "libs/rmq/src/*"
+      ],
+      "@ecom/authn": [
+        "libs/authn/src"
+      ],
+      "@ecom/authn/*": [
+        "libs/authn/src/*"
+      ]
+    }
+  }
+}
