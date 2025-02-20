@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    ports:
+      - "5672:5672"   # RabbitMQ server
+      - "15672:15672" # Management dashboard
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - ecom
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - ecom
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ecomdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecom
+
+networks:
+  ecom:
+    driver: bridge
+
+volumes:
+  rabbitmq_data:
+  redis_data:
+  postgres_data:

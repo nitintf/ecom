@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 
-import { PaymentModule } from './payment.module';
+import { NotificationsModule } from './notifications.module';
 
 async function bootstrap(): Promise<void> {
-  const app = await NestFactory.create(PaymentModule);
+  const app = await NestFactory.create(NotificationsModule);
   await app.listen(process.env.port ?? 3000);
 }
 
