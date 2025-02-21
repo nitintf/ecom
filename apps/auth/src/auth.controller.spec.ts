@@ -17,8 +17,10 @@ describe('AuthController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(authController.getHello()).toBe('Hello World!');
+    it('should return Hello World message', () => {
+      expect(authController.getHello()).toEqual({
+        message: 'Hello World!',
+      });
     });
   });
 });
