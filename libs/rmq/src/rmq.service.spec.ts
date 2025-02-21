@@ -82,15 +82,17 @@ describe('RmqService', () => {
     it('should call channel.ack with the original message', () => {
       const channel = { ack: jest.fn() };
       const message = { content: Buffer.from('test') };
+      const getChannelRef = jest.fn().mockReturnValue(channel);
+      const getMessage = jest.fn().mockReturnValue(message);
       const context = {
-        getChannelRef: jest.fn().mockReturnValue(channel),
-        getMessage: jest.fn().mockReturnValue(message),
+        getChannelRef,
+        getMessage,
       } as unknown as RmqContext;
 
       service.ack(context);
 
-      expect(context.getChannelRef()).toHaveBeenCalled();
-      expect(context.getMessage()).toHaveBeenCalled();
+      expect(getChannelRef).toHaveBeenCalled();
+      expect(getMessage).toHaveBeenCalled();
       expect(channel.ack).toHaveBeenCalledWith(message);
     });
   });
