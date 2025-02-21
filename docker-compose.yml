@@ -11,6 +11,12 @@ services:
       - "15672:15672" # Management dashboard
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
     networks:
       - ecom
 
@@ -18,8 +24,15 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD:-master123}
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
     networks:
       - ecom
 
@@ -33,6 +46,30 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - ecom
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    command: --replSet rs0
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    restart: always
     networks:
       - ecom
 
@@ -44,3 +81,4 @@ volumes:
   rabbitmq_data:
   redis_data:
   postgres_data:
+  mongo_data:

@@ -18,30 +18,16 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@ecom/database": [
-        "libs/database/src"
-      ],
-      "@ecom/database/*": [
-        "libs/database/src/*"
-      ],
-      "@ecom/logger": [
-        "libs/logger/src"
-      ],
-      "@ecom/logger/*": [
-        "libs/logger/src/*"
-      ],
-      "@ecom/rmq": [
-        "libs/rmq/src"
-      ],
-      "@ecom/rmq/*": [
-        "libs/rmq/src/*"
-      ],
-      "@ecom/authn": [
-        "libs/authn/src"
-      ],
-      "@ecom/authn/*": [
-        "libs/authn/src/*"
-      ]
+      "@ecom/database": ["libs/database/src"],
+      "@ecom/database/*": ["libs/database/src/*"],
+      "@ecom/logger": ["libs/logger/src"],
+      "@ecom/logger/*": ["libs/logger/src/*"],
+      "@ecom/rmq": ["libs/rmq/src"],
+      "@ecom/rmq/*": ["libs/rmq/src/*"],
+      "@ecom/authn": ["libs/authn/src"],
+      "@ecom/authn/*": ["libs/authn/src/*"],
+      "@ecom/common": ["libs/common/src"],
+      "@ecom/common/*": ["libs/common/src/*"]
     }
-  },
+  }
 }

@@ -22,9 +22,11 @@
   },
   "dependencies": {
     "@fastify/cookie": "^11.0.2",
+    "@golevelup/nestjs-rabbitmq": "^5.7.0",
     "@nest-lab/throttler-storage-redis": "^1.1.0",
     "@nestjs/cache-manager": "^3.0.0",
     "@nestjs/common": "^11.0.10",
+    "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.10",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/microservices": "^11.0.10",
@@ -38,6 +40,7 @@
     "@sentry/node": "^9.1.0",
     "@sentry/tracing": "^7.120.3",
     "@willsoto/nestjs-prometheus": "^6.0.2",
+    "amqplib": "^0.10.5",
     "argon2": "^0.41.1",
     "cache-manager": "^6.4.0",
     "class-transformer": "^0.5.1",
@@ -46,6 +49,7 @@
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
     "helmet": "^8.0.0",
+    "lodash": "^4.17.21",
     "nestjs-graceful-shutdown": "^1.0.3",
     "nestjs-i18n": "^10.5.0",
     "nestjs-pino": "^4.3.0",
@@ -55,7 +59,8 @@
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "socket.io": "^4.8.1",
-    "swagger-stats": "^0.99.7"
+    "swagger-stats": "^0.99.7",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
@@ -67,6 +72,7 @@
     "@nestjs/testing": "11.0.10",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.2",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^20.3.1",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
@@ -111,7 +117,8 @@
       "^@ecom/database(|/.*)$": "<rootDir>/libs/database/src/$1",
       "^@ecom/logger(|/.*)$": "<rootDir>/libs/logger/src/$1",
       "^@ecom/rmq(|/.*)$": "<rootDir>/libs/rmq/src/$1",
-      "^@ecom/authn(|/.*)$": "<rootDir>/libs/authn/src/$1"
+      "^@ecom/authn(|/.*)$": "<rootDir>/libs/authn/src/$1",
+      "^@ecom/common(|/.*)$": "<rootDir>/libs/common/src/$1"
     }
   }
 }
