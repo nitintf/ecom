@@ -4,6 +4,7 @@ import { RmqModule } from '@ecom/rmq';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
+import { rmqConfig } from './config/rmq.config';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 
@@ -16,9 +17,7 @@ import { ProductsService } from './products.service';
       load: [appConfig],
       envFilePath: './apps/products/.env',
     }),
-    RmqModule.register({
-      name: 'PRODUCTS',
-    }),
+    RmqModule.register(rmqConfig),
   ],
   controllers: [ProductsController],
   providers: [ProductsService],

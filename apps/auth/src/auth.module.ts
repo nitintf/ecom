@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { rmqConfig } from './config/rmq.config';
 
 @Module({
   imports: [
@@ -16,9 +17,7 @@ import { AuthService } from './auth.service';
       load: [appConfig],
       envFilePath: './apps/auth/.env',
     }),
-    RmqModule.register({
-      name: 'AUTH',
-    }),
+    RmqModule.register(rmqConfig),
   ],
   controllers: [AuthController],
   providers: [AuthService],
